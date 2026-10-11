@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>고압·특고압 전기설비 - KEC 퀴즈</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--tx:#1b2330;--mu:#667085;--bd:#d9dee8;--pr:#2457d6;--ok:#12805c;--okb:#e3f6ee;--no:#c62b2b;--nob:#fde8e8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10141c;--card:#1a212d;--tx:#e8ecf3;--mu:#98a2b3;--bd:#2c3646;--pr:#6b95ff;--ok:#4ad19b;--okb:#12352a;--no:#ff7b7b;--nob:#3a1c1c}}
+:root[data-theme="dark"]{--bg:#10141c;--card:#1a212d;--tx:#e8ecf3;--mu:#98a2b3;--bd:#2c3646;--pr:#6b95ff;--ok:#4ad19b;--okb:#12352a;--no:#ff7b7b;--nob:#3a1c1c}
+*{box-sizing:border-box}html,body{margin:0}body{background:var(--bg);color:var(--tx);font-family:-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.55}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--bd);padding:10px 14px}
+.t{display:flex;align-items:center;justify-content:space-between;gap:8px}.t h1{font-size:17px;margin:0}.t small{color:var(--mu);font-size:13px}
+.bar{height:5px;background:var(--bd);border-radius:3px;margin:8px 0;overflow:hidden}.bar i{display:block;height:100%;background:var(--pr);width:0}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+button,select{font:inherit;font-size:13px;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:16px;padding:5px 11px;cursor:pointer}
+button.on{background:var(--pr);color:#fff;border-color:var(--pr)}
+main{max-width:680px;margin:0 auto;padding:12px}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px;margin-bottom:12px}
+.h{display:flex;justify-content:space-between;align-items:center;color:var(--mu);font-size:12px}.h b{color:var(--pr)}
+.h button{border:0;background:none;font-size:20px;padding:0 4px}
+.q{font-weight:600;margin:6px 0 10px}
+.o{display:block;width:100%;text-align:left;border-radius:10px;border:1.5px solid var(--bd);background:var(--card);padding:10px 12px;margin:6px 0;font-size:15px}
+.o.ok{border-color:var(--ok);background:var(--okb)}.o.no{border-color:var(--no);background:var(--nob)}
+.ex{margin-top:10px;padding:10px 12px;border-left:4px solid var(--pr);background:var(--bg);border-radius:8px;font-size:14px}
+.ex .r{color:var(--ok)}.ex .w{color:var(--no)}.st{color:var(--mu);font-size:12px;margin-top:6px}
+.em{text-align:center;color:var(--mu);padding:40px 0}
+#up{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));width:42px;height:42px;border-radius:50%;background:var(--pr);color:#fff;border:0;font-size:18px;display:none}
+.ov{position:fixed;inset:0;background:#0008;z-index:9;display:none}.ov.s{display:block}
+.dr{position:absolute;top:0;right:0;bottom:0;width:260px;background:var(--card);padding:16px;overflow:auto}
+.dr a{display:block;padding:12px 4px;color:var(--tx);text-decoration:none;border-bottom:1px solid var(--bd)}
+.md{position:absolute;left:10px;right:10px;top:8%;bottom:8%;background:var(--card);border-radius:14px;padding:16px;overflow:auto;max-width:640px;margin:0 auto}
+.md h3{margin:12px 0 4px;font-size:15px;color:var(--pr)}.md p{margin:2px 0;font-size:14px}
+</style></head><body>
+<header><div class="t"><h1>⚡ 고압·특고압 전기설비</h1><span><small id="cnt">0/0</small> <button id="mn">메뉴</button></span></div>
+<div class="bar"><i id="pb"></i></div>
+<div class="row" id="f">
+<button data-f="all" class="on">전체</button><button data-f="wrong">오답</button>
+<select id="fq"><option value="">자주틀림▾</option><option value="24">정확률 24% 이하</option><option value="49">정확률 49% 이하</option><option value="74">정확률 74% 이하</option></select>
+<button id="rs">↺</button></div>
+<div class="row"><button id="so">🔀 순서섞기</button><button id="sp">🎲 보기섞기</button><button id="bm">⭐ 북마크</button><button id="fm">📐 공식모음</button><button id="sa">👁 정답보기</button></div></header>
+<main id="L"></main><button id="up">↑</button>
+<div class="ov" id="om"><div class="dr"><button id="cm">✕ 닫기</button><a href="https://dyeon723.github.io/jungigigi/" target="_blank">⚡ 전기기기</a><a href="https://dyeon723.github.io/junjagihak/" target="_blank">🔬 전자기학</a><a href="https://dyeon723.github.io/wjsfurrhdgkr/" target="_blank">🔌 전력공학</a><a href="https://dyeon723.github.io/wjsrlhoiro/" target="_blank">🔄 회로이론</a><a href="https://dyeon723.github.io/rovPwkdcl/" target="_blank">🔧 개폐장치</a><a href="#" id="th">🌓 테마 전환</a></div></div>
+<div class="ov" id="of"><div class="md"><button id="cf">✕ 닫기</button>
+<h3>가공전선 높이</h3><p>고압: 도로 6 / 철도 6.5 / 횡단보도교 3.5 / 평지 5 (m)</p><p>저압: 도로 5 / 철도 6.5 / 횡단보도교 3 / 기타 4 (m)</p>
+<h3>특고압 높이</h3><p>35kV 이하 10m(절연 8m), 초과 시 10kV 또는 단수마다 +0.12m</p>
+<h3>경간(목주·A종 / B종 / 철탑)</h3><p>고압 150/250/600 · 보안공사 100/150/400 · 22㎟ 연선 300/500</p><p>특고압 보안 75/150/400(단주 300) · 21.67kN/50㎟ 연선 300/500</p>
+<h3>안전율</h3><p>기초 2 · 이상시 철탑 1.33 · 경동선 2.2 · 기타 전선 2.5 · 지선 2.5 · 목주 풍압 1.5(고압 지지물 1.3)</p>
+<h3>이격거리</h3><p>고압-저압 동일 지지물 0.5(케이블 0.3) · 약전류 저압 0.75 / 고압 1.5</p><p>특고-저고압: 35kV 이하 1.2(0.5), 35~60kV 2(1), 60kV 초과 2+0.12N</p>
+<h3>접지저항</h3><p>혼촉 10Ω · 피뢰기 10Ω(전용 30Ω) · 가공공동지선 300Ω · 특고 중성선 300Ω / 1km 15Ω</p>
+<h3>지중·울타리</h3><p>매설 1.0(중량물 無 0.6) · 지중함 1㎥ · 울타리 2m, 하단 0.15m, 합계 5/6m(+0.12)</p>
+<h3>퓨즈·피뢰</h3><p>포장 1.3배/2배·120분 · 비포장 1.25배/2배·2분</p></div></div>
+<script>
+const ALL=[
+["TT·TN 계통에서 고장 지속시간이 5초를 초과할 때 스트레스 전압 기준 EPR 한도는?",["EPR ≤ 250 V","EPR ≤ 1200 V","EPR ≤ 600 V","EPR ≤ 300 V"],0,"고장 지속시간 5초 이하는 EPR ≤ 1200 V, 5초 초과는 EPR ≤ 250 V. 접촉전압은 TT는 해당 없음, TN은 EPR ≤ F·U_TP. F 기본값은 2이며, PEN 또는 저압 중간도체가 고압·특고압 접지계통에 접속되면 F=1."],
+["35 kV 이하 특고압전로와 저압전로를 결합하는 변압기에서, 전로에 지락이 생겼을 때 자동 차단해야 하는 시간은?",["1초 이내","2초 이내","5초 이내","0.5초 이내"],0,"변압기 중성점 접지 시 35kV 이하 특고압전로는 지락 시 1초 이내 자동 차단장치가 필요하다. 계산된 접지저항이 10Ω를 넘으면 10Ω 이하로 한다."],
+["저압전로 사용전압이 300 V 이하이고 접지공사를 변압기 증성점에 하기 어려울 때의 시설 방법은?",["저압측 1단자에 시설","특고압측 1단자에 시설","접지 생략","변압기 외함에만 시설"],0,"300V 이하 저압전로에서 증성점 접지가 어려우면 저압측 1단자에 접지공사를 한다."],
+["토지 상황으로 변압기 시설장소에서 접지저항값을 얻기 어려울 때, 가공접지도체를 변압기 시설장소로부터 떼어놓을 수 있는 최대 거리는?",["200 m","100 m","300 m","400 m"],0,"인장강도 5.26kN 이상 또는 지름 4mm 이상의 가공접지도체를 변압기 시설장소로부터 200m까지 떼어놓을 수 있다."],
+["가공공동지선 시설 기준으로 옳은 것은?",["5.26kN 이상 또는 지름 4mm 이상 경동선, 변압기 중심 지름 400m 이내 지역","지름 2mm 연동선, 지름 200m 이내","지름 2mm 경동선, 지름 400m 이내","지름 4mm 경동선, 지름 1km 이내"],0,"가공공동지선은 5.26kN 이상 또는 지름 4mm 이상 경동선, 변압기를 중심으로 지름 400m 이내(전선로 바로 아래 양쪽). 합성저항은 지름 1km 지역 안, 각 접지도체를 분리했을 때 각각 300Ω 이하. 저압 가공전선 1선 겸용 가능."],
+["혼촉방지판이 있는 변압기에 접속하는 저압 옥외전선 시설로 옳지 않은 것은?",["고압·특고압 가공전선과 동일 지지물에 시설해도 된다","저압전선은 1구내에만 시설한다","저압 가공전선로·옥상 전선로의 전선은 케이블이다","고압 및 특고압 가공선이 케이블인 경우는 동일 지지물 금지의 예외"],0,"저압 가공전선과 고압·특고압 가공전선은 동일 지지물에 시설하지 않는다(예외: 고압·특고압 가공선이 케이블인 경우)."],
+["특고압과 고압의 혼촉 방지용 방전장치의 설치 기준은?",["사용전압 3배 이하 전압에서 방전, 변압기 단자에 가까운 1극","3배 이하에서 방전, 모든 극","5배 이하에서 방전, 1극","2배 이하에서 방전, 1극"],0,"고압전로에 사용전압 3배 이하 전압이 가해지면 방전하는 장치를 변압기 단자에 가까운 1극에 설치. 피뢰기를 모선으로 각 상에 시설하거나, 혼촉방지판 접지저항 10Ω 이하이면 생략 가능."],
+["고압·특고압 전로 중성점 접지에서 접지도체의 최소 공칭단면적은? (저압전로 중성점은 6㎟)",["16㎟","6㎟","10㎟","25㎟"],0,"고압·특고압 전로 중성점 접지도체는 16㎟ 이상 연동선(또는 동등 이상), 저압전로는 6㎟ 이상. 접지 저항기·리액터는 사람이 접촉할 우려가 없도록 시설."],
+["1kV 초과 가공전선로에서 발생하는 전파 허용한도 기준(531~1,602kHz 대역)의 SNR은?",["24 dB 이상","12 dB 이상","36 dB 이상","71 dB 이상"],0,"SNR 24dB 이상. 잡음강도(N)는 청명 시 준첨두치(QP), 신호강도(S)는 저잡음지역 방송전계강도 71 dBμV/m. 지지물 발판볼트는 지표상 1.8m 미만에 시설 금지."],
+["가공전선로 지지물 강도 계산에 쓰는 풍압하중의 설명으로 옳은 것은?",["병종은 갑종의 1/2을 기초로 계산","병종은 갑종과 동일","을종은 빙설 두께 12mm 기준","병종은 갑종의 2배"],0,"을종: 두께 6mm·비중 0.9 빙설 부착, 수직투영면적 372Pa(다도체 333Pa), 그 외는 갑종의 1/2. 병종: 갑종의 1/2. 인가가 많이 연접한 곳의 저·고압 지지물, 35kV 이하 특고압 절연전선·케이블 지지물 등에는 병종을 적용."],
+["가공전선로 지지물 기초의 안전율은?(이상 시 상정하중에 대한 철탑 기초는 1.33 이상)",["2 이상","1.5 이상","2.5 이상","1.33 이상"],0,"하중을 받는 지지물 기초의 안전율은 2 이상, 이상 시 철탑 기초는 1.33 이상. 철탑은 지선으로 강도를 분담시킬 수 없다."],
+["설계하중 6.8kN 이하, 전장 15m 초과 16m 이하 철근콘크리트주의 최소 근입 깊이는?",["2.5 m 이상","2.0 m 이상","2.8 m 이상","3.0 m 이상"],0,"15m 이하는 전장의 1/6 이상, 15m 초과는 2.5m 이상. 16m 초과 20m 이하(6.8kN 이하)는 2.8m 이상. 6.8kN 초과 9.8kN 이하는 위 기준에 30cm 가산. 9.8~14.72kN: 15m 이하 +0.5m, 15~18m 3m, 18m 초과 3.2m."],
+["지선 시설 기준으로 옳은 것은?",["안전율 2.5 이상, 허용인장하중 4.31kN 이상","안전율 1.5 이상, 4.31kN 이상","안전율 2.5 이상, 2.26kN 이상","소선 2가닥 이상"],0,"소선 3가닥 이상 연선, 소선 지름 2.6mm 이상, 지중부분·지표상 0.3m까지는 내식성 또는 아연도금 철봉. 도로 횡단 시 지표상 5m(교통 지장 없으면 4.5m, 보도 2.5m)."],
+["서로 다른 지지물에 상호 접근할 때 설치하는 지선은?",["공동지선","수평지선","궁지선","Y지선"],0,"가공지선(직격뢰 보호)/공동지선(서로 다른 지지물 접근). 수평지선: 도로 횡단, 궁지선: 설치 장소 협소, Y지선: 전주가 긴 곳·H주, 보통지선: 일반 장소."],
+["고압 가공전선이 도로를 횡단할 때 지표상 높이는? (철도 6.5m, 횡단보도교 3.5m)",["6 m 이상","5 m 이상","6.5 m 이상","3.5 m 이상"],0,"도로 횡단 6m(교통 지장 없으면 5m), 철도·궤도 횡단 레일면상 6.5m, 횡단보도교 위 노면상 3.5m, 일반 평지 5m. 저압은 5m/6.5m/3m/4m."],
+["고압 가공전선의 굵기·안전율로 옳은 것은?",["경동선 안전율 2.2 이상, 그 밖의 전선 2.5 이상","경동선 2.5, 그 밖 2.2","모두 2.0","모두 1.5"],0,"굵기는 8.01kN 이상 고압 절연전선·특고압 절연전선, 또는 지름 5mm 이상 경동선. 가공지선은 5.26kN 이상 또는 지름 4mm 이상 나경동선."],
+["고압 가공전선로 경간 제한(목주·A종 / B종 / 철탑)은?",["150m / 250m / 600m","100m / 150m / 400m","75m / 150m / 400m","300m / 500m / 600m"],0,"고압 보안공사는 100/150/400m. 22㎟ 이상 경동연선(8.71kN 이상) 사용 시 일반은 300/500m(목주·A종 / B종). 100m 초과 경간은 8.01kN 이상 또는 5mm 이상 경동선, 목주 풍압 안전율 1.5 이상."],
+["저압 가공전선(다중접지 중성선 제외)과 고압 가공전선을 동일 지지물에 시설할 때 이격거리는?",["0.5 m 이상(고압이 케이블이면 0.3 m)","0.3 m 이상","0.75 m 이상","1.2 m 이상"],0,"저압을 고압 아래로 하고 별개 완금류에 시설, 이격 0.5m(고압 케이블은 0.3m). 가공약전류전선 공가 시 이격은 저압 0.75m(다중접지 중성선 제외), 고압 1.5m 이상."],
+["특고압 가공전선로 지지물에 사용할 수 없는 것은?",["목주","철주","철근콘크리트주","철탑"],0,"특고압은 철주·철근콘크리트주·철탑만 사용하며 목주는 불가. 경간은 A종 75m, B종 150m, 철탑 400m(단주 300m). 100kV 이상 특고압과 저·고압은 동일 지지물 시설 금지."],
+["사용전압 55kV인 특고압 가공전선의 일반 지표상 높이는?(35kV 초과: 10m에 35kV 초과분 10kV 또는 단수마다 0.12m 가산)",["10.24 m","10 m","10.12 m","10.36 m"],0,"(55−35)/10 = 2단수 → 10 + 0.12×2 = 10.24m. 35kV 이하는 10m(특고압 절연전선은 8m). 100kV 초과 가공전선은 지락·단락 시 1초 이내 자동 차단장치를 시설."],
+["사용전압 60 kV 초과 특고압 가공전선로의 유도장해 방지 기준은?",["전화선로 40km마다 유도전류 3μA 이하","12km마다 2μA 이하","40km마다 2μA 이하","12km마다 3μA 이하"],0,"60kV 이하: 12km마다 2μA 이하. 60kV 초과: 40km마다 3μA 이하."],
+["35 kV 이하 특고압 가공전선과 저·고압 가공전선을 동일 지지물에 병행 설치할 때 이격거리는?",["1.2 m 이상(케이블은 0.5 m)","0.5 m 이상","2 m 이상","0.8 m 이상"],0,"특고압을 위, 별개 완금류, 특고압은 연선. 35kV 초과 60kV 이하는 제2종 특고압 보안공사로 2m(케이블 1m), 60kV 초과는 2m+0.12×N."],
+["차량 등 중량물의 압력을 받을 우려가 있는 장소에 지중전선로를 관로식·직접 매설식으로 시설할 때 매설 깊이는?",["1.0 m 이상","0.6 m 이상","1.2 m 이상","1.5 m 이상"],0,"중량물 압력 우려 장소 1.0m, 그 외 0.6m(직접 매설은 트라프 등 방호물에 시설). 지중함은 크기 1㎥ 이상이면 통풍장치 등 가스 방산장치를 설치."],
+["아크를 발생하는 고압용 개폐기·차단기와 목재 벽·천장 등 가연성 물체와의 최소 이격거리는?",["1 m 이상","2 m 이상","0.5 m 이상","1.5 m 이상"],0,"고압용 1m, 특고압용 2m(35kV 이하에서 화재 우려 없게 제한하면 1m). 고압 기계기구는 지표상 4.5m(시가지 외 4m) 이상 또는 울타리 높이 2m 이상, 하단 간격 0.15m 이하."],
+["포장퓨즈의 용단 특성으로 옳은 것은?",["1.3배 전류에 견디고 2배 전류로 120분 안에 용단","1.25배에 견디고 2배로 2분 안에 용단","1.3배에 견디고 2배로 2분 안에 용단","1.25배에 견디고 2배로 120분 안에 용단"],0,"포장퓨즈 1.3배·120분, 비포장퓨즈 1.25배·2분. 접지공사 접지도체, 다선식 전로의 증성선 등에는 과전류차단기를 시설하지 않는다. 피뢰기 접지저항은 10Ω 이하(전용 접지공사는 30Ω 이하)."],
+["고압 옥내배선(애자사용)의 시설 기준으로 옳은 것은?",["전선 6㎟ 이상 연동선, 지지점 간 6m 이하(조영재 면 2m)","전선 4㎟, 지지점 간 8m","전선 간 0.05m, 조영재와 0.08m","전선 10㎟, 지지점 간 2m"],0,"전선 상호 간 0.08m 이상, 전선과 조영재 0.05m 이상, 애자는 절연성·난연성·내수성. 고압 옥내배선은 애자사용(건조·전개), 케이블, 케이블트레이 중 하나. 압축공기장치는 최고 사용압력 1.5배 수압을 10분간 견뎌야 하고 압력계는 1.5~3배 눈금."],
+["35 kV 초과 160 kV 이하 발전소 울타리·담 높이와 충전부분까지 거리의 합계는?",["6 m 이상","5 m 이상","7 m 이상","8 m 이상"],0,"35kV 이하 5m, 35~160kV 6m, 160kV 초과는 6m에 10kV 또는 단수마다 0.12m 가산. 울타리 높이 2m 이상, 지표면과 하단 간격 0.15m 이하. 금속제 울타리가 특고압 가공전선과 교차하면 교차점 좌우 45m 이내 접지, 문 접지는 100Ω 이하."],
+["저·고압 가공전선로와 기설 가공약전류전선로가 병행할 때 통신 장해 방지를 위한 이격거리는?",["2 m 이상","0.75 m 이상","1.2 m 이상","0.5 m 이상"],0,"2m 이상(관리자 승낙 시 예외). 유도장해 방지: 이격 증가, 교류식은 연가, 경동선 금속선 2가닥 이상 시설 후 접지."],
+["저압 가공전선에 케이블을 사용할 때 조가용선 기준은?",["인장강도 5.93kN 이상 또는 22㎟ 이상 아연도강연선","8.01kN 이상","13.93kN 이상 또는 25㎟","5.26kN 이상"],0,"케이블은 조가용선에 행거로 시설(고압은 행거 간격 0.5m 이하), 조가용선·케이블 금속 피복은 접지. 13.93kN/25㎟는 특고압용."],
+["고압 가공전선에 반도전성 외장 조가용 고압 케이블을 쓸 때 금속테이프 감는 간격은?",["0.06 m 이하","0.2 m 이하","0.5 m 이하","1 m 이하"],0,"일반 케이블은 조가용선에 접촉시켜 금속테이프를 0.2m 이하 간격으로 나선상 감지만, 반도전성 외장 케이블은 0.06m 이하."],
+["전선에 14.51kN 이상 또는 38㎟ 이상 경동연선을 쓰는 고압 보안공사에서 B종 철주·철탑 지지물 경간은?",["표준경간 적용","100 m","150 m","제한 없음"],0,"고압 보안공사는 8.01kN/5mm 이상 경동선, 목주 풍압 안전율 1.5 이상. 38㎟ 이상 경동연선이면 B종·철탑에 표준경간을 적용."],
+["고압 가공전선과 저압 가공전선이 접근·교차할 때 이격거리는?(고압 케이블 아님)",["저압 가공전선 0.8 m 이상","0.4 m 이상","0.6 m 이상","1.2 m 이상"],0,"고압 케이블이면 0.4m. 저압 지지물과는 0.6m(케이블 0.3m). 교차 시 고압 전선을 저압 전선 아래에 시설하면 안 된다."],
+["고압 가공전선이 교류전차선 등과 접근하는 보안공사에서 목주·A종 / B종 경간은?",["60 m / 120 m","100 m / 150 m","150 m / 250 m","75 m / 150 m"],0,"목주·A종 60m 이하, B종 120m 이하. 완금류는 금속제 접지, 전선·애자·지지물과 교류전차선 등과 이격 2m 이상."],
+["고압 가공전선과 식물의 관계로 옳은 것은?",["상시 바람 등에 의해 식물에 접촉하지 않도록 시설","접촉해도 무방","식물 위에는 항상 시설 금지","식물과 5m 이격"],0,"KEC 332.19: 상시 부는 바람 등에 의해 식물에 접촉하지 않도록 시설한다."],
+["가공약전류전선이 절연전선 또는 통신용 케이블이고 저압 가공전선이 고압·특고압 절연전선이거나 케이블일 때 이격은?",["0.3 m 이상","0.5 m 이상","0.75 m 이상","1.5 m 이상"],0,"이 경우 0.3m 이상이며 접지도체·접지극과는 각각 별개로 시설. 일반 공용설치는 저압 0.75m, 고압 1.5m, 목주 안전율 1.5, 가공전선을 위로 하고 별개 완금류."],
+["제1종 특고압 보안공사에서 100 kV 이상 300 kV 미만일 때 전선 기준은?",["58.84kN 이상 또는 150㎟ 이상","21.67kN 이상 또는 55㎟","77.47kN 이상 또는 200㎟","8.01kN 이상"],0,"100kV 미만 21.67kN/55㎟, 100~300kV 58.84kN/150㎟, 300kV 이상 77.47kN/200㎟. 압축 접속 외에는 경간 도중 접속점 시설 금지."],
+["특고압 중성선 다중접지에서 1 km마다의 합성 전기저항값은?(각 접지점 300Ω 이하)",["15 Ω 이하","10 Ω 이하","30 Ω 이하","300 Ω 이하"],0,"각 접지점 300Ω 이하, 1km당 합성저항 15Ω 이하."],
+["특고압 가공전선에 케이블을 쓸 때 조가용선 기준은?",["13.93kN 이상 연선 또는 25㎟ 이상 아연도강연선","5.93kN/22㎟","8.01kN 이상","21.67kN 이상"],0,"행거 간격 0.5m 이하, 또는 금속테이프 0.2m 이하 나선. 금속 피복은 접지. 강심 포함 케이블 등은 전용 부속품으로 고정(인장강도 13.39kN 이상)."],
+["특고압 가공전선로의 가공지선으로 사용할 수 없는 것은?",["지름 4mm 나경동선","8.01kN 이상 나선 또는 지름 5mm 이상 나경동선","22㎟ 이상 나경동연선","아연도강연선 22㎟ 또는 OPGW"],0,"특고압 가공지선은 8.01kN 이상 나선 또는 5mm 이상 나경동선, 22㎟ 이상 나경동연선, 아연도강연선 22㎟ 또는 OPGW. 지름 4mm는 고압용."],
+["철탑 중 전선로의 수평각도가 3도를 초과하는 곳에 사용하는 것은?",["각도형","직선형","인류형","보강형"],0,"직선형은 3도 이하 직선부, 인류형은 전선로 시작·끝, 보강형은 직선부 보강용."],
+["지지물 양쪽 경간 차가 커 불평균 장력이 작용하는 곳에 사용하는 철탑은?",["내장형","인류형","직선형","각도형"],0,"내장형은 양쪽 경간 차가 큰 곳에 사용한다."],
+["사용전압 170 kV 초과 전선로에서 전선을 지지하는 애자장치는?",["아크 혼 부착 현수애자 또는 장간애자","핀애자","라인포스트애자","소형 핀애자"],0,"회선수 2 이상 또는 공급 지장 없게 시설, 인류 시 압축형·쐐기형 클램프 사용."],
+["특고압 가공전선로 지지물의 위험표시를 생략할 수 있는 경우는?",["35kV 이하에서 특고압 절연전선을 사용하는 경우","100kV 이상인 경우","철탑인 경우","케이블 전 구간"],0,"위험표시는 보기 쉬운 곳에 시설하되, 35kV 이하 특고압 절연전선은 예외."],
+["사용전압 100 kV 미만 특고압 가공전선로의 전선 최소 기준은?",["21.67kN 이상 또는 55㎟ 이상 경동연선·알루미늄선·절연전선","58.84kN 이상","8.01kN 이상","14.51kN 이상"],0,"100kV 이상은 58.84kN/150㎟ 이상."],
+["21.67kN 이상 또는 50㎟ 이상 경동연선을 사용한 특고압 가공전선로의 B종 철주·철근콘크리트주 경간은?",["500 m 이하","250 m 이하","300 m 이하","600 m 이하"],0,"목주·A종 300m, B종 500m 이하. 일반 경간은 150/250/600m."],
+["35 kV 이하 특고압 가공전선과 가공약전류전선 등의 공용설치 시 이격거리는?",["2 m 이상(케이블 0.5 m)","1.2 m 이상","1.5 m 이상","0.75 m 이상"],0,"제2종 특고압 보안공사, 특고압을 위로 하고 별개 완금류, 21.67kN/50㎟ 이상 경동연선, 약전류선은 차폐층 있는 통신용 케이블."],
+["지중전선로를 암거식으로 시설할 때 옳지 않은 것은?",["가연성 피복의 전선을 사용한다","불연성·자소성 난연 피복 지중전선 사용","불연성·난연성 관 또는 트라프에 시설","암거 내 자동소화설비 시설"],0,"불연성 또는 자소성 난연성 피복 전선, 연소방지 테이프·시트·도료, 불연성 관, 자동소화설비 중 해당 조치를 한다."],
+["지중함 시설 기준으로 옳지 않은 것은?",["뚜껑은 누구나 쉽게 열 수 있게 한다","차량 중량물 압력에 견디는 구조","고인 물을 제거할 수 있는 구조","1㎥ 이상은 통풍장치 시설"],0,"뚜껑은 시설자 이외의 자가 쉽게 열 수 없도록 한다."],
+["지중전선 방호장치의 금속제 부분·접속함·피복 금속체는 어떻게 하는가?",["접지공사를 한다","절연한다","생략한다","대지와 분리한다"],0,"예외로 방식조치를 한 부분은 접지 생략 가능."],
+["부하전류 차단용이 아닌 개폐기(단로기)의 시설 기준은?",["부하전류가 통하는 중에는 개로할 수 없게 시설","부하전류 통전 중에도 개로 가능","표시장치 불필요","자물쇠 금지"],0,"예외: 개폐기 근처에 부하전류 유무 표시장치, 전화기 등 지령장치, 터블렛 등으로 개로 조작 방지. 중력 등으로 자연 작동 우려가 있으면 자물쇠 장치로 방지."],
+["변압기에 의해 특고압·고압전로와 결합되는 저압전로에서 지락 시 자동차단장치가 필요한 사용전압은?",["400 V 초과","300 V 초과","600 V 초과","150 V 초과"],0,"발전기 공급 400V 초과 저압전로, 발전소·변전소 인출구, 타 사업자 수전점, 배전용 변압기 시설장소에도 자동차단장치 시설."],
+["저압·고압 가공전선을 교류전차선 등과 동일 지지물에 시설할 때 수평거리는?",["교류전차선 등을 지지하는 쪽의 반대쪽에서 1 m 이상","0.5 m 이상","2 m 이상","1.5 m 이상"],0,"반대쪽에서 수평거리 1m 이상으로 시설한다."],
+["저압·고압 가공전선을 교류전차선 등의 위로 시설할 때 수직거리 기준은?",["수평거리의 1.5배 이하","수평거리의 1배 이하","수평거리의 2배 이하","수평거리의 3배 이상"],0,"수직거리는 수평거리의 1.5배 이하로 시설한다."],
+["고압 및 특고압 계기용 변성기의 2차측 전로에 대한 접지 규정은?",["접지공사를 하여야 한다","접지를 생략한다","1차측만 접지한다","특고압만 접지한다"],0,"KEC 322.4: 고압·특고압 계기용 변성기의 2차측 전로 모두 접지공사를 한다."],
+["변압기의 안정권선·유휴권선 또는 전압조정기 내장권선에 접지공사를 하는 경우는?",["이상전압으로부터 보호하기 위해 특히 필요한 경우","항상 생략한다","사용전압 300V 이하인 경우만","특고압 변압기만"],0,"이상전압으로부터 권선을 보호하기 위해 특히 필요한 경우 그 권선에 접지공사를 한다."],
+["저압전로의 중성점에 시설하는 접지도체의 최소 단면적은?",["6㎟ 이상 연동선","16㎟ 이상","10㎟ 이상","4㎟ 이상"],0,"고압·특고압 전로는 16㎟ 이상, 저압전로 중성점은 6㎟ 이상 연동선 또는 쉽게 부식하지 않는 금속선으로 시설."],
+["전로의 중성점 접지 목적으로 옳지 않은 것은?",["전로의 전압을 상승시키기 위해","보호장치의 확실한 동작 확보","이상전압의 억제","대지전압의 저하"],0,"중성점 접지는 보호장치 확실 동작 확보, 이상전압 억제, 대지전압 저하가 목적이다."],
+["IT 계통에서 보호도체가 있는 경우 EPR 접촉전압 요건은?",["TN 계통에 따른다","해당 없음","EPR ≤ 250 V","F = 1"],0,"보호도체 없는 IT는 접촉전압 해당 없음. 스트레스 전압은 5초 이하 1200V, 초과 250V. 통신기기는 ITU 권고 적용."]
+];
+const I=ALL.map((x,i)=>({id:i,q:x[0],o:x[1].map((t,k)=>({t,c:k===x[2]})),e:x[3]}));
+let ST={},BM={};try{const d=JSON.parse(localStorage.getItem('kec2')||'{}');ST=d.s||{};BM=d.b||{}}catch(e){}
+const sv=()=>{try{localStorage.setItem('kec2',JSON.stringify({s:ST,b:BM}))}catch(e){}};
+let flt='all',fq=0,onlyBM=false,showA=false,ord=I.map(x=>x.id),perm={},ses={};
+const $=id=>document.getElementById(id),sh=a=>a.sort(()=>Math.random()-.5);
+const acc=id=>{const s=ST[id];return s&&s[0]+s[1]?s[0]/(s[0]+s[1])*100:null};
+function P(id){return perm[id]||(perm[id]=I[id].o.map((_,k)=>k))}
+function card(id){const x=I[id],a=ses[id],p=P(id),s=ST[id];
+let h=`<div class="c" id="q${id}"><div class="h"><span><b>Q${id+1}</b></span><button data-b="${id}">${BM[id]?'★':'☆'}</button></div><p class="q">${x.q}</p>`;
+p.forEach((k,n)=>{const o=x.o[k];let c='';if(a!==undefined||showA){if(o.c)c='ok';else if(a===k)c='no'}
+h+=`<button class="o ${c}" data-i="${id}" data-k="${k}">${'①②③④'[n]} ${o.t}</button>`});
+if(a!==undefined||showA){const r=a===undefined?null:x.o[a].c;h+=`<div class="ex">${r===null?'':`<b class="${r?'r':'w'}">${r?'✅ 정답!':'❌ 오답!'}</b><br>`}${x.e}</div>`}
+if(s)h+=`<div class="st">누적 ${s[0]}정답 / ${s[1]}오답 (정확률 ${Math.round(acc(id))}%)</div>`;
+return h+'</div>'}
+function list(){return ord.filter(id=>{if(onlyBM&&!BM[id])return false;if(flt==='wrong'&&!(ST[id]&&ST[id][2]===0))return false;
+if(fq){const a=acc(id);if(a===null||a>fq)return false}return true})}
+function render(){const L=list();$('L').innerHTML=L.length?L.map(card).join(''):'<div class="em">해당하는 문제가 없습니다</div>';upd()}
+function upd(){const L=list(),n=L.filter(id=>ses[id]!==undefined).length;$('cnt').textContent=n+'/'+L.length;$('pb').style.width=(L.length?n/L.length*100:0)+'%'}
+$('L').onclick=e=>{const t=e.target.closest('button');if(!t)return;
+if(t.dataset.b!==undefined){const id=+t.dataset.b;BM[id]?delete BM[id]:BM[id]=1;sv();if(onlyBM)render();else t.textContent=BM[id]?'★':'☆';return}
+if(t.dataset.i===undefined)return;const id=+t.dataset.i,k=+t.dataset.k;if(ses[id]!==undefined)return;
+ses[id]=k;const r=I[id].o[k].c;const s=ST[id]||[0,0,1];r?s[0]++:s[1]++;s[2]=r?1:0;ST[id]=s;sv();
+$('q'+id).outerHTML=card(id);upd()};
+function tog(id,on){$(id).classList.toggle('on',on)}
+$('f').onclick=e=>{const b=e.target.closest('button[data-f]');if(!b)return;flt=b.dataset.f==='wrong'&&flt==='wrong'?'all':b.dataset.f;
+document.querySelectorAll('[data-f]').forEach(x=>x.classList.toggle('on',x.dataset.f===flt));render()};
+$('fq').onchange=e=>{fq=+e.target.value;render()};
+$('rs').onclick=()=>{if(confirm('풀이 기록(정확률·오답)을 모두 초기화할까요?')){ST={};ses={};sv();render()}};
+$('so').onclick=()=>{ord=sh([...ord]);render()};
+$('sp').onclick=()=>{const on=!$('sp').classList.contains('on');perm={};if(on)I.forEach(x=>perm[x.id]=sh(x.o.map((_,k)=>k)));tog('sp',on);ses={};render()};
+$('bm').onclick=()=>{onlyBM=!onlyBM;tog('bm',onlyBM);render()};
+$('sa').onclick=()=>{showA=!showA;tog('sa',showA);render()};
+$('fm').onclick=()=>$('of').classList.add('s');$('cf').onclick=()=>$('of').classList.remove('s');
+$('mn').onclick=()=>$('om').classList.add('s');$('cm').onclick=()=>$('om').classList.remove('s');
+$('om').onclick=e=>{if(e.target.id==='om')$('om').classList.remove('s')};$('of').onclick=e=>{if(e.target.id==='of')$('of').classList.remove('s')};
+$('th').onclick=e=>{e.preventDefault();const d=document.documentElement;const dk=getComputedStyle(d).getPropertyValue('--bg').trim()==='#10141c';d.dataset.theme=dk?'light':'dark'};
+window.onscroll=()=>$('up').style.display=scrollY>300?'block':'none';$('up').onclick=()=>scrollTo({top:0,behavior:'smooth'});
+render();
+</script></body></html>
